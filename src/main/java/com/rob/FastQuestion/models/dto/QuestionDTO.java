@@ -1,11 +1,8 @@
 package com.rob.FastQuestion.models.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.rob.FastQuestion.models.Answer;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.ToString;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
