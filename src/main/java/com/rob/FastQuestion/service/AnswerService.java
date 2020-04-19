@@ -23,15 +23,11 @@ public class AnswerService implements IAnswerService {
     public Answer saveAnswer(Answer answer) {
 
         if (!Objects.isNull(answer) && !Objects.isNull(answer.getQuestion())) {
-            if (questionRepo.findById(answer.getQuestion().getId()).get() != null)
-                return answerRepo.save(answer);
-        } else try {
-            throw new AnswerQuestionNullException("Answer Have not Question: {} " + answer);
-        } catch (AnswerQuestionNullException e) {
-            e.printStackTrace();
+            return answerRepo.save(answer);
         }
-        return null;
-    }
+
+            throw new AnswerQuestionNullException("Answer Have not Question: {} " + answer);
+        }
 
     @Override
     public List<Answer> findAll() {
