@@ -6,7 +6,6 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 @Table(name = "questions")
@@ -24,8 +23,8 @@ public class Question {
     @ToString.Exclude
     private List<Answer> answers = new ArrayList<>();
 
-    public void addToAnswers(Answer answer){
-        if(answer!=null){
+    public void addToAnswers(Answer answer) {
+        if (answer != null) {
             answers.add(answer);
             answer.setQuestion(this);
         }

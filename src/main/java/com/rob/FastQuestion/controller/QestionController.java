@@ -10,7 +10,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 
@@ -26,17 +25,17 @@ public class QestionController {
     }
 
     @GetMapping(value = "/getRandomQuestion")
-    public Question getRandomQuestion(){
+    public Question getRandomQuestion() {
         return questionService.getRandomQuestion();
     }
 
     @GetMapping(value = "/getAllQuestion")
-    public Question getAllQuestion(){
+    public Question getAllQuestion() {
         return questionService.findAll().get(0);
     }
 
     @PostMapping(value = "saveFile")
-    public void saveFile(@RequestParam("file") MultipartFile uploadedFile){
+    public void saveFile(@RequestParam("file") MultipartFile uploadedFile) {
         File file;
         try {
             InputStream inputStream = uploadedFile.getInputStream();

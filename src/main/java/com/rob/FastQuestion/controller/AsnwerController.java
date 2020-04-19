@@ -40,7 +40,7 @@ public class AsnwerController {
     }
 
     @GetMapping(value = "/getNewAnswerByQuestion")
-    public List<Answer> getNewAnswerByQuestion(Integer count){
+    public List<Answer> getNewAnswerByQuestion(Integer count) {
         return null;
     }
 }

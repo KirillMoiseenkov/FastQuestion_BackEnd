@@ -1,6 +1,8 @@
 package com.rob.FastQuestion.service;
 
 import com.rob.FastQuestion.exception.AnswerQuestionNullException;
+import com.rob.FastQuestion.exception.ObjectIsNullException;
+import com.rob.FastQuestion.exception.QuestionIsNotFoundException;
 import com.rob.FastQuestion.models.Answer;
 import com.rob.FastQuestion.models.Question;
 import com.rob.FastQuestion.repo.AnswerRepo;
@@ -10,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -21,11 +22,17 @@ public class AnswerService implements IAnswerService {
 
     @Override
     public Answer saveAnswer(Answer answer) {
-        if (!Objects.isNull(answer) && !Objects.isNull(answer.getQuestion())) {
+        if (answer != null) {
+            if (answer.getQuestion() != null) {
+                throw new AnswerQuestionNullException("Answer Have not Question: {} " + answer);
+            }
+            questionRepo.findById(answer.getQuestion().getId()).orElseThrow(() ->
+                    new QuestionIsNotFoundException("Question is not found: {} " + answer.getQuestion()));
             return answerRepo.save(answer);
         }
-        throw new AnswerQuestionNullException("Answer Have not Question: {} " + answer);
+        throw new ObjectIsNullException("Answer is null: {}");
     }
+
 
     @Override
     public List<Answer> findAll() {

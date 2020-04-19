@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface IQuestionService {
     Question saveQuestion(Question question);
+
     List<Question> findAll();
+
     Question getRandomQuestion();
 }
