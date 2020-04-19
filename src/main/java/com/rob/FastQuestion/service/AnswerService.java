@@ -23,7 +23,7 @@ public class AnswerService implements IAnswerService {
     @Override
     public Answer saveAnswer(Answer answer) {
         if (answer != null) {
-            if (answer.getQuestion() != null) {
+            if (answer.getQuestion() == null) {
                 throw new AnswerQuestionNullException("Answer Have not Question: {} " + answer);
             }
             questionRepo.findById(answer.getQuestion().getId()).orElseThrow(() ->

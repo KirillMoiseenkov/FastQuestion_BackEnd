@@ -2,6 +2,7 @@ package com.rob.FastQuestion.controller;
 
 import com.rob.FastQuestion.models.Question;
 import com.rob.FastQuestion.service.interfaces.IQuestionService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -11,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 
 
 @RestController
@@ -20,18 +22,21 @@ public class QestionController {
     IQuestionService questionService;
 
     @PostMapping(value = "/saveQuestion")
+    @ApiOperation("Сохранить вопрос")
     public Question saveQuestion(@RequestBody Question question) {
         return questionService.saveQuestion(question);
     }
 
     @GetMapping(value = "/getRandomQuestion")
+    @ApiOperation("Получить случайный вопрос")
     public Question getRandomQuestion() {
         return questionService.getRandomQuestion();
     }
 
-    @GetMapping(value = "/getAllQuestion")
-    public Question getAllQuestion() {
-        return questionService.findAll().get(0);
+    @GetMapping(value = "/getAllQuestions")
+    @ApiOperation("Получить все вопросы")
+    public List<Question> getAllQuestion() {
+        return questionService.findAll();
     }
 
     @PostMapping(value = "saveFile")

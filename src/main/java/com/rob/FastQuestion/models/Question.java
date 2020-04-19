@@ -1,7 +1,11 @@
 package com.rob.FastQuestion.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.ToString;
+import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -13,14 +17,18 @@ import java.util.List;
 public class Question {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @ApiModelProperty("Id сущности")
     private Integer id;
 
     @Column(name = "text")
+    @ApiModelProperty("Текст вопроса")
     private String text;
 
-    @OneToMany(mappedBy = "question")
+    @OneToMany(mappedBy = "question", fetch = FetchType.LAZY)
     @ToString.Exclude
+    @JsonBackReference
+    @ApiModelProperty("Список ответов на вопрос")
     private List<Answer> answers = new ArrayList<>();
 
     public void addToAnswers(Answer answer) {
