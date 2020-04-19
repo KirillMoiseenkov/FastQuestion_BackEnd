@@ -21,13 +21,11 @@ public class AnswerService implements IAnswerService {
 
     @Override
     public Answer saveAnswer(Answer answer) {
-
         if (!Objects.isNull(answer) && !Objects.isNull(answer.getQuestion())) {
             return answerRepo.save(answer);
         }
-
-            throw new AnswerQuestionNullException("Answer Have not Question: {} " + answer);
-        }
+        throw new AnswerQuestionNullException("Answer Have not Question: {} " + answer);
+    }
 
     @Override
     public List<Answer> findAll() {
