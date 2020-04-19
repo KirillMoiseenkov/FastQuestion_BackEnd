@@ -5,11 +5,13 @@ import com.rob.FastQuestion.models.Question;
 import com.rob.FastQuestion.service.interfaces.IAnswerService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("api/v1/answer")
 public class AsnwerController {
 
     @Autowired
@@ -21,7 +23,7 @@ public class AsnwerController {
         return answerService.findAll();
     }
 
-    @PostMapping(value = "/saveAnswer")
+    @PostMapping(value = "/saveAnswer", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation("Сохранить ответ на вопрос")
     public Answer saveAnswer(@RequestBody Answer answer) {
         return answerService.saveAnswer(answer);

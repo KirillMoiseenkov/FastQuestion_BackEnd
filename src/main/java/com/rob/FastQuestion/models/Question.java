@@ -1,6 +1,6 @@
 package com.rob.FastQuestion.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.ToString;
@@ -25,7 +25,7 @@ public class Question {
 
     @OneToMany(mappedBy = "question", fetch = FetchType.LAZY)
     @ToString.Exclude
-    @JsonBackReference
+    @JsonManagedReference
     @ApiModelProperty("Список ответов на вопрос")
     private List<Answer> answers = new ArrayList<>();
 

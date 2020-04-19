@@ -1,6 +1,6 @@
 package com.rob.FastQuestion.models;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.ToString;
@@ -24,7 +24,7 @@ public class Answer {
     @ManyToOne(fetch = FetchType.LAZY)
     @ToString.Exclude
     @JoinColumn(name = "question_id")
-    @JsonManagedReference
+    @JsonBackReference
     @ApiModelProperty("Вопрос")
     private Question question;
 
