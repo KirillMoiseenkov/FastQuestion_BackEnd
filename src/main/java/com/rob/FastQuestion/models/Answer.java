@@ -17,7 +17,8 @@ public class Answer {
     @Column(name = "text")
     private String text;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fk_questions_message")
     @ToString.Exclude
     private Question question;
 
