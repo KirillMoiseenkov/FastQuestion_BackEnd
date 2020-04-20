@@ -1,4 +1,4 @@
-package com.rob.FastQuestion.SwaggerConfig;
+package com.rob.FastQuestion.config;
 
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;

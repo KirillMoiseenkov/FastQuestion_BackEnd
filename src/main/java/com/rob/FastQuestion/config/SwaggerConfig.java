@@ -1,4 +1,4 @@
-package com.rob.FastQuestion.SwaggerConfig;
+package com.rob.FastQuestion.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
