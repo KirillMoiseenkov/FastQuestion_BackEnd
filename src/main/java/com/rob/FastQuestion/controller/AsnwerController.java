@@ -46,10 +46,4 @@ public class AsnwerController {
     public List<Answer> getAnswerByQuestionId(@PathVariable("id") Integer id) {
         return answerService.getAnswersByQuestionId(id);
     }
-
-//    @GetMapping(value = "/getNewAnswerByQuestion")
-//    @ApiOperation("")
-//    public List<Answer> getNewAnswerByQuestion(Integer count) {
-//        return null;
-//    }
 }

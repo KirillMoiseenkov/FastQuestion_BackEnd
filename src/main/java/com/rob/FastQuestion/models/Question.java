@@ -15,7 +15,7 @@ import java.util.List;
 public class Question {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty("Id сущности")
     private Integer id;
 
@@ -38,5 +38,16 @@ public class Question {
             answers.add(answer);
             answer.setQuestion(this);
         }
+    }
+
+    @OneToMany(mappedBy = "question", fetch = FetchType.LAZY)
+    @ToString.Exclude
+    @JsonManagedReference
+    @ApiModelProperty("Файлы")
+    private List<QuestionFile> questionFiles = new ArrayList<>();
+
+    public void setQuestionFile(QuestionFile questionFile) {
+        questionFiles.add(questionFile);
+        questionFile.setQuestion(this);
     }
 }
