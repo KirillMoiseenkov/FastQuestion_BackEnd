@@ -46,7 +46,7 @@ public class QestionController {
         try {
             InputStream inputStream = uploadedFile.getInputStream();
 
-            String outputStream = "/Users/kirillmoiseenkov/Desktop/FastQuestion/src/main/resources";
+            String outputStream = "/Users/kirillmoiseenkov/Desktop";
 
             Files.copy(uploadedFile.getInputStream(), Paths.get(outputStream));
             file = new File(outputStream);
@@ -56,5 +56,4 @@ public class QestionController {
         }
 
     }
-
 }

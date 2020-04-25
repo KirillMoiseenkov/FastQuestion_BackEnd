@@ -23,6 +23,10 @@ public class Question {
     @ApiModelProperty("Текст вопроса")
     private String text;
 
+    @Column(name = "lang")
+    @ApiModelProperty("Язык")
+    private String lang;
+
     @OneToMany(mappedBy = "question", fetch = FetchType.LAZY)
     @ToString.Exclude
     @JsonManagedReference

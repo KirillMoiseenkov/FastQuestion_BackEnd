@@ -21,6 +21,10 @@ public class Answer {
     @ApiModelProperty("Текст ответа")
     private String text;
 
+    @Column(name = "lang")
+    @ApiModelProperty("Язык")
+    private String lang;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @ToString.Exclude
     @JoinColumn(name = "question_id")
