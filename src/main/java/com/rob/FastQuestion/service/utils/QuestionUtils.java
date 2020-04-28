@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class QuestionUtils {
@@ -19,16 +20,19 @@ public class QuestionUtils {
     }
 
     public static List<QuestionDTO> mapQuestionToQuestionDTO(List<Question> questionList) {
-        if (questionList != null && !questionList.isEmpty())
-            questionList.stream().map(question -> {
+        List<QuestionDTO> questionDTOS = new ArrayList<>();
+        if (questionList != null && !questionList.isEmpty()) {
+            questionDTOS = questionList.stream().map(question -> {
                 QuestionDTO questionDTO = new QuestionDTO();
                 questionDTO.setId(question.getId());
                 questionDTO.setAnswers(question.getAnswers());
                 questionDTO.setLang(question.getLang());
                 questionDTO.setText(question.getText());
+                questionDTO.setAnswers(question.getAnswers());
                 return questionDTO;
-            });
-        return new ArrayList<>();
+            }).collect(Collectors.toList());
+        }
+        return questionDTOS;
     }
 
 }
