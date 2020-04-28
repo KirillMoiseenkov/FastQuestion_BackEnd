@@ -34,7 +34,7 @@ public class QestionController {
 
     @PostMapping(value = "/saveQuestion")
     @ApiOperation("Сохранить вопрос")
-    public QuestionDTO saveQuestion(@RequestBody Question question) {
+    public QuestionDTO saveQuestion(@RequestBody Question question) { //сделать QuestionDTO
         return QuestionUtils.mapQuestionToQuestionDTO(questionService.saveQuestion(question));
     }
 

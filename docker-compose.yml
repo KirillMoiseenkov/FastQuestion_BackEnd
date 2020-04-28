@@ -1,0 +1,20 @@
+version: "3"
+services:
+  postgres:
+    image: postgres:latest
+    network_mode: bridge
+    container_name: postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    expose:
+      - 1025
+    ports:
+      - 1025:1025
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=root
+      - POSTGRES_DB=test
+    restart: unless-stopped
+  # APP*****************************************
+volumes:
+  postgres-data:
