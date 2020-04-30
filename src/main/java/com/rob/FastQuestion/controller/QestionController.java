@@ -50,10 +50,10 @@ public class QestionController {
         return QuestionUtils.mapQuestionToQuestionDTO(questionService.findAll());
     }
 
-    @PostMapping(value = "save/question/file")
+    @PostMapping(value = "save/question/file/{id}")
     @ApiOperation("Сохранение вопроса с файлом")
-    public void saveQuestionFile(@RequestPart("file") MultipartFile uploadedFile,
-                                 @RequestParam(required = true, value = "id") Integer id) {
+    public void saveQuestionFile(@RequestParam("file") MultipartFile uploadedFile,
+                                 @PathVariable(required = true, value = "id") Integer id) {
         Question question = questionService.findById(id);
         questionService.saveQuestionWithFile(uploadedFile, question);
     }
@@ -62,19 +62,5 @@ public class QestionController {
     @ApiModelProperty("Получить файлы по id вопроса")
     public List<QuestionFile> getFilesByQuestionId(@PathVariable Integer id) {
         return questionFileStorageService.findByQuestionId(id);
-    }
-
-    @GetMapping(value = "get/file/test/{id}")
-    @ApiModelProperty("Получить файлы по id вопроса")
-    public File getFilesByQuestionIdTest(@PathVariable Integer id) throws IOException {
-        QuestionFile questionFile = questionFileStorageService.findByQuestionId(id).get(5);
-
-        byte[] data = questionFile.getData();
-
-        File file = new File("/Users/kirillmoiseenkov/Desktop/Всякий мусор/FastQuestion/sample.jpg");
-        OutputStream os = new FileOutputStream(file);
-        os.write(data);
-        os.close();
-        return file;
     }
 }
