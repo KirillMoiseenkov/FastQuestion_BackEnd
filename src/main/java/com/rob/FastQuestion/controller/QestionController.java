@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiOperation;
 import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -52,6 +53,7 @@ public class QestionController {
 
     @PostMapping(value = "save/question/file/{id}")
     @ApiOperation("Сохранение вопроса с файлом")
+    @ResponseStatus(HttpStatus.OK)
     public void saveQuestionFile(@RequestParam("file") MultipartFile uploadedFile,
                                  @PathVariable(required = true, value = "id") Integer id) {
         Question question = questionService.findById(id);
@@ -62,5 +64,11 @@ public class QestionController {
     @ApiModelProperty("Получить файлы по id вопроса")
     public List<QuestionFile> getFilesByQuestionId(@PathVariable Integer id) {
         return questionFileStorageService.findByQuestionId(id);
+    }
+
+    @GetMapping(value = "get/question/{id}")
+    @ApiModelProperty("Получить вопрос по id")
+    public Question getQuestionById(@PathVariable(value = "id") Integer id) {
+        return questionService.findById(id);
     }
 }
