@@ -17,7 +17,7 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty("Id сущности")
-    private Integer id;
+    private Long id;
 
     @Column(name = "text")
     @ApiModelProperty("Текст вопроса")
@@ -33,6 +33,10 @@ public class Question {
     @ApiModelProperty("Список ответов на вопрос")
     private List<Answer> answers = new ArrayList<>();
 
+    @Column(name = "probability")
+    @ApiModelProperty("Вероятность")
+    private Double probability = 0d;
+
     public void addToAnswers(Answer answer) {
         if (answer != null) {
             answers.add(answer);
@@ -40,9 +44,13 @@ public class Question {
         }
     }
 
+    @Column(name = "type_of_question")
+    @ApiModelProperty("Тип вопроса")
+    private QuestionType questionType;
+
     @OneToMany(mappedBy = "question", fetch = FetchType.LAZY)
     @ToString.Exclude
-    @JsonManagedReference
+    //@JsonManagedReference
     @ApiModelProperty("Файлы")
     private List<QuestionFile> questionFiles = new ArrayList<>();
 

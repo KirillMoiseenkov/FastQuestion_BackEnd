@@ -11,16 +11,15 @@ import com.rob.FastQuestion.service.interfaces.IAnswerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
-public class AnswerService implements IAnswerService {
+public class AnswerService {
 
     private final AnswerRepo answerRepo;
     private final QuestionRepo questionRepo;
 
-    @Override
     public Answer saveAnswer(Answer answer) {
         if (answer != null) {
             if (answer.getQuestion() == null) {
@@ -33,26 +32,25 @@ public class AnswerService implements IAnswerService {
         throw new ObjectIsNullException("Answer is null: {}");
     }
 
-
-    @Override
     public List<Answer> findAll() {
         return answerRepo.findAll();
     }
 
-    @Override
     public List<Answer> getAnswersByQuestion(Question question) {
         return answerRepo.findAnswersByQuestion(question);
     }
 
 
     //Question can have the same text, this method just for test
-    @Override
     public List<Answer> getAnswersByQuestionText(String text) {
         return answerRepo.findAnswersByQuestionText(text);
     }
 
-    @Override
     public List<Answer> getAnswersByQuestionId(Integer id) {
         return answerRepo.findAnswersByQuestionId(id);
+    }
+
+    public Integer getCountOfAnswers() {
+        return answerRepo.getCountOfQuestions();
     }
 }

@@ -14,7 +14,10 @@ public class QuestionFile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty("Id файла")
-    private Integer id;
+    private Long id;
+
+    @Version
+    private Integer version;
 
     @ApiModelProperty("Название файла")
     @Column(name = "file_name")
@@ -24,6 +27,10 @@ public class QuestionFile {
     @Column(name = "file_type")
     private String fileType;
 
+    @ApiModelProperty("Рейтинг")
+    @Column(name = "rate")
+    private Long count = 0l;
+
     @Lob
     private byte[] data;
 
@@ -32,10 +39,4 @@ public class QuestionFile {
     @JsonBackReference
     @ApiModelProperty("Вопрос")
     private Question question;
-
-//    public QuestionFile(String fileName, String fileType, byte[] data){
-//        this.fileName = fileName;
-//        this.fileType = fileType;
-//        this.data = data;
-//    }
 }

@@ -31,6 +31,10 @@ public class QuestionFileStorageService {
         }
     }
 
+    public QuestionFile saveQuestionFile(QuestionFile questionFile) {
+        return questionFilesRepo.save(questionFile);
+    }
+
     public QuestionFile getQuestionFilesRepo(Long id) {
         return questionFilesRepo.findById(id).orElseThrow(() -> new FileNotFoundException("File with id {0} not found"));
     }
@@ -40,7 +44,15 @@ public class QuestionFileStorageService {
     }
 
     @Transactional
-    public List<QuestionFile> findByQuestionId(Integer id) {
+    public List<QuestionFile> findByQuestionId(Long id) {
         return questionFilesRepo.findByQuestionId(id);
     }
+
+    public void addVoteToQuestionFile(Long id) {
+        QuestionFile questionFile = getQuestionFilesRepo(id);
+        questionFile.setCount(questionFile.getCount() + 1);
+        saveQuestionFile(questionFile);
+    }
+
+
 }

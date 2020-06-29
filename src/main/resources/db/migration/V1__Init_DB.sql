@@ -2,6 +2,7 @@ create table questions (
         id SERIAL not null,
         text varchar(255),
         lang varchar(255),
+        probability float8,
         primary key (id)
     );
 create table answers (
