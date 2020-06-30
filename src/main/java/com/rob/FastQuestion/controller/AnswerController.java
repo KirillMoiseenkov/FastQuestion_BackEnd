@@ -21,7 +21,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/answer")
-public class AsnwerController {
+public class AnswerController {
 
     @Autowired
     private AnswerService answerService;
