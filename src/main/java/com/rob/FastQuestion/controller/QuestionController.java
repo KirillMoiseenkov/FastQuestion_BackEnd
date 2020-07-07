@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/question")
-public class QestionController {
+public class QuestionController {
 
     @Autowired
     QuestionService questionService;
@@ -64,7 +64,7 @@ public class QestionController {
         questionService.saveQuestionWithFile(uploadedFile, question);
     }
 
-    @GetMapping(value = "get/file/{id}")
+    @GetMapping(value = "get/file/by/question/{id}")
     @ApiModelProperty("Получить файлы по id вопроса")
     public List<QuestionFile> getFilesByQuestionId(@PathVariable Long id) {
         return questionFileStorageService.findByQuestionId(id);

@@ -12,6 +12,9 @@ import java.util.stream.Collectors;
 @Service
 public class QuestionUtils {
     public static QuestionDTO mapQuestionToQuestionDTO(Question question) {
+        if (question == null) {
+            return null;
+        }
         QuestionDTO questionDTO = new QuestionDTO();
         questionDTO.setId(question.getId());
         questionDTO.setAnswers(question.getAnswers());

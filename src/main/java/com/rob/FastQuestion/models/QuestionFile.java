@@ -31,6 +31,10 @@ public class QuestionFile {
     @Column(name = "rate")
     private Long count = 0l;
 
+    @ApiModelProperty("Путь к файлу")
+    @Column(name = "file_path")
+    private String path;
+
     @Lob
     private byte[] data;
 

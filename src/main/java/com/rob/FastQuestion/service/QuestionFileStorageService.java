@@ -4,6 +4,7 @@ import com.rob.FastQuestion.exception.FileNotFoundException;
 import com.rob.FastQuestion.exception.FileStorageException;
 import com.rob.FastQuestion.models.QuestionFile;
 import com.rob.FastQuestion.repo.QuestionFilesRepo;
+import com.rob.FastQuestion.service.interfaces.QuestionFileStorage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -14,7 +15,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Service
-public class QuestionFileStorageService {
+public class QuestionFileStorageService implements QuestionFileStorage {
     @Autowired
     QuestionFilesRepo questionFilesRepo;
 

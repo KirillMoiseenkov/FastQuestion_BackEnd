@@ -7,9 +7,11 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class WsController {
-    @MessageMapping("/answer")
-    @SendTo("/topic/news")
+    @MessageMapping("/user")
+    @SendTo("/topic/user")
     public String broadcastNews(@Payload String message) {
+        message = "you";
+        me
         return message;
     }
 }

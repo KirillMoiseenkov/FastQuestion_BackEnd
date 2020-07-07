@@ -1,6 +1,5 @@
 package com.rob.FastQuestion.controller;
 
-import com.google.common.primitives.Longs;
 import com.rob.FastQuestion.exception.AnswerQuestionNullException;
 import com.rob.FastQuestion.models.Answer;
 import com.rob.FastQuestion.models.Question;
@@ -8,9 +7,6 @@ import com.rob.FastQuestion.models.QuestionFile;
 import com.rob.FastQuestion.service.AnswerService;
 import com.rob.FastQuestion.service.QuestionFileStorageService;
 import com.rob.FastQuestion.service.QuestionService;
-import com.rob.FastQuestion.service.interfaces.IAnswerService;
-import com.rob.FastQuestion.service.interfaces.IQuestionService;
-import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -66,19 +62,19 @@ public class AnswerController {
         throw new AnswerQuestionNullException("Question is not exist");
     }
 
-    @PostMapping(value = "/getAnswerByQuestion")
+    @PostMapping(value = "/get/answer/by/question")
     @ApiOperation("Получить ответ по вопросу")
     public List<Answer> getAnswerByQuestion(@RequestBody Question question) {
         return answerService.getAnswersByQuestion(question);
     }
 
-    @PostMapping(value = "/getAnswerByQuestionText")
+    @PostMapping(value = "/get/answer/by/question/text")
     @ApiOperation("Получить ответ по тексту вопроса")
     public List<Answer> getAnswerByQuestionText(@RequestBody Question question) {
         return answerService.getAnswersByQuestionText(question.getText());
     }
 
-    @GetMapping(value = "/getAnswerByQuestionId/{id}")
+    @GetMapping(value = "/get/answer/by/question/{id}")
     @ApiOperation("Получить ответ на вопрос по Id вопроса")
     public List<Answer> getAnswerByQuestionId(@PathVariable("id") Integer id) {
         return answerService.getAnswersByQuestionId(id);
