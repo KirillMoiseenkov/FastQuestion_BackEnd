@@ -9,7 +9,7 @@ function setConnected(connected) {
     else {
         $("#conversation").hide();
     }
-    $("#userinfo").html("");
+    $("#answerinfo").html("");
 }
 
 function connect() {
@@ -19,7 +19,7 @@ function connect() {
         setConnected(true);
         console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/user', function (greeting) {
-            showGreeting(JSON.parse(greeting.body).content);
+            showGreeting(JSON.parse(greeting.body).text);
         });
     });
 }
@@ -36,8 +36,8 @@ function sendName() {
     stompClient.send("/app/user", {}, JSON.stringify({'text': $("#text").val()}));
 }
 
-function showGreeting(message) {
-    $("#answerinfo").append("<tr><td>" + message + "</td></tr>");
+function showGreeting(text) {
+    $("#answerinfo").append("<tr><td>" + text + "</td></tr>");
 }
 
 $(function () {
