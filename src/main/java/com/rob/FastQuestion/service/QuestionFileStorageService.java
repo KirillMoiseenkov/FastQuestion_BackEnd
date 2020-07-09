@@ -19,17 +19,18 @@ public class QuestionFileStorageService implements QuestionFileStorage {
     @Autowired
     QuestionFilesRepo questionFilesRepo;
 
+    @Autowired
+    FileSaverService fileSaverService;
+
+    @Transactional(rollbackOn = IOException.class)
     public QuestionFile storageFile(MultipartFile file) {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-        try {
-            QuestionFile qFile = new QuestionFile();
-            qFile.setFileName(fileName);
-            qFile.setData(file.getBytes());
-            qFile.setFileType(file.getContentType());
-            return questionFilesRepo.save(qFile);
-        } catch (IOException e) {
-            throw new FileStorageException("Could not store file " + fileName, e);
-        }
+        QuestionFile qFile = new QuestionFile();
+        qFile.setFileName(fileName);
+        fileSaverService.saveFile(fileName, file);
+        qFile.setFileType(file.getContentType());
+
+        return questionFilesRepo.save(qFile);
     }
 
     public QuestionFile saveQuestionFile(QuestionFile questionFile) {

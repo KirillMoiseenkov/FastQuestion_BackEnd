@@ -14,6 +14,10 @@ import java.util.List;
 @Data
 public class Question {
 
+    public enum Status {
+        ACTIVE, DISABLE
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty("Id сущности")
@@ -32,6 +36,9 @@ public class Question {
     @JsonManagedReference
     @ApiModelProperty("Список ответов на вопрос")
     private List<Answer> answers = new ArrayList<>();
+
+    @Column(name = "status")
+    private Status status;
 
     @Column(name = "probability")
     @ApiModelProperty("Вероятность")
