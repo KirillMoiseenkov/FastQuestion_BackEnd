@@ -80,7 +80,7 @@ public class AnswerController {
 
     @GetMapping(value = "/getAnswerByQuestionId/{id}")
     @ApiOperation("Получить ответ на вопрос по Id вопроса")
-    public List<Answer> getAnswerByQuestionId(@PathVariable("id") Integer id) {
+    public List<Answer> getAnswerByQuestionId(@PathVariable("id") Long id) {
         return answerService.getAnswersByQuestionId(id);
     }
 }

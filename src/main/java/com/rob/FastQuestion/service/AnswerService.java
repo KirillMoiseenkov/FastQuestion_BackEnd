@@ -46,7 +46,7 @@ public class AnswerService {
         return answerRepo.findAnswersByQuestionText(text);
     }
 
-    public List<Answer> getAnswersByQuestionId(Integer id) {
+    public List<Answer> getAnswersByQuestionId(Long id) {
         return answerRepo.findAnswersByQuestionId(id);
     }
 
