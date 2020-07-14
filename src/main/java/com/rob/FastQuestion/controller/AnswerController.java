@@ -1,5 +1,6 @@
 package com.rob.FastQuestion.controller;
 
+import com.rob.FastQuestion.config.message.FQMessageSource;
 import com.rob.FastQuestion.exception.AnswerQuestionNullException;
 import com.rob.FastQuestion.models.Answer;
 import com.rob.FastQuestion.models.Question;
@@ -8,6 +9,7 @@ import com.rob.FastQuestion.service.AnswerService;
 import com.rob.FastQuestion.service.QuestionFileStorageService;
 import com.rob.FastQuestion.service.QuestionService;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/answer")
+@Slf4j
 public class AnswerController {
 
     @Autowired
@@ -28,9 +31,13 @@ public class AnswerController {
     @Autowired
     private QuestionFileStorageService fileStorageService;
 
+    @Autowired
+    FQMessageSource messageSource;
+
     @GetMapping(value = "/getAnswers")
-    @ApiOperation("Получить список вскех вопросов")
+    @ApiOperation("Получить список всех ответов")
     public List<Answer> getAnswers() {
+        log.debug(messageSource.get("answer.get.all"));
         return answerService.findAll();
     }
 

@@ -26,7 +26,6 @@ public class WebSocketListener {
         Answer answer = new Answer();
         answer.setText("Wow");
         messagingTemplate.convertAndSend("/topic/user", answer);
-        fileSaverService.saveFile();
     }
 
     @EventListener

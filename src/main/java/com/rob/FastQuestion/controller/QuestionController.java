@@ -1,5 +1,6 @@
 package com.rob.FastQuestion.controller;
 
+import com.rob.FastQuestion.config.message.FQMessageSource;
 import com.rob.FastQuestion.models.Question;
 import com.rob.FastQuestion.models.QuestionFile;
 import com.rob.FastQuestion.models.dto.QuestionDTO;
@@ -34,6 +35,9 @@ public class QuestionController {
 
     @Autowired
     QuestionFileStorageService questionFileStorageService;
+
+    @Autowired
+    FQMessageSource messageSource;
 
     @PostMapping(value = "/saveQuestion")
     @ApiOperation("Сохранить вопрос")

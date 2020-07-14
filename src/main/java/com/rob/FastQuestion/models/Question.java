@@ -57,7 +57,6 @@ public class Question {
 
     @OneToMany(mappedBy = "question", fetch = FetchType.LAZY)
     @ToString.Exclude
-    //@JsonManagedReference
     @ApiModelProperty("Файлы")
     private List<QuestionFile> questionFiles = new ArrayList<>();
 

@@ -17,22 +17,31 @@
     <div class="row">
         <div class="col-md-6">
             <form class="form-inline">
-                <div class="form-group">
-                    <label for="connect">WebSocket connection:</label>
-                    <button id="connect" class="btn btn-default" type="submit">Connect</button>
-                    <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect
-                    </button>
-                </div>
+                <button id="send_qid" class="btn btn-default" type="submit">Connect</button>
+                <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect</button>
             </form>
-        </div>
-        <div class="col-md-6">
             <form class="form-inline">
                 <div class="form-group">
-                    <label for="text">What is your name?</label>
-                    <input type="text" id="text" class="form-control" placeholder="Your name here...">
+                    <label for="text">Enter answer text and Question ID</label>
+                    <input type="text" id="text" class="form-control" placeholder="Answer text">
+                    <!--                    <input type="text" id="roomIds" class="form-control" placeholder="Your roomIds">-->
                 </div>
                 <button id="send" class="btn btn-default" type="submit">Send</button>
             </form>
+        </div>
+    </div>
+    </br>
+    <div class="row">
+        <div class="col-md-12">
+            <table id="title" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Question name</th>
+                </tr>
+                </thead>
+                <tbody id="qTitle">
+                </tbody>
+            </table>
         </div>
     </div>
     <div class="row">
@@ -40,7 +49,7 @@
             <table id="conversation" class="table table-striped">
                 <thead>
                 <tr>
-                    <th>StockInfo</th>
+                    <th>Answers</th>
                 </tr>
                 </thead>
                 <tbody id="answerinfo">
