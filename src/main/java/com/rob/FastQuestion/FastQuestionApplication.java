@@ -11,4 +11,5 @@ public class FastQuestionApplication {
     public static void main(String[] args) {
         SpringApplication.run(FastQuestionApplication.class, args);
     }
+
 }
