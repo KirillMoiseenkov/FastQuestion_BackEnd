@@ -40,8 +40,6 @@ function disconnect() {
 }
 
 function sendName() {
-    //roomIds =  {'roomIds': $("#roomIds").val()};
-    //roomIds = roomIds.roomIds;
     roomIds = que.id;
     text = JSON.stringify({'text': $("#text").val()})
     stompClient.send("/app/user/send-answer/" + roomIds, {}, text);
@@ -59,6 +57,10 @@ function getRandomAnswer() {
     xhr.send();
 }
 
+function askQuestion() {
+    $("#answers").hide();
+}
+
 $(function () {
     getRandomAnswer();
     $("form").on('submit', function (e) {
@@ -67,4 +69,5 @@ $(function () {
     $( "#disconnect" ).click(function() { disconnect(); });
     $( "#send" ).click(function() { sendName(); });
     $( "#send_qid" ).click(function() { connect(); });
+    $( "#ask_question" ).click(function() { askQuestion(); });
 });

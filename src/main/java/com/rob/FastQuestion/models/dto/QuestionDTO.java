@@ -25,7 +25,7 @@ public class QuestionDTO {
     @ApiModelProperty("Список ответов на вопрос")
     private List<Answer> answers = new ArrayList<>();
 
-    @ApiModelProperty("id файлов")
+    @ApiModelProperty("id файлов и их голоса")
     private Map<Long, Long> fileIds = new HashMap<>();
 
     @ApiModelProperty("Тип вополса")

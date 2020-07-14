@@ -59,4 +59,10 @@ public class QuestionUtils {
         return questionDTOS;
     }
 
+    public static Question mapQuestionDTOtoQuestionForSaving(QuestionDTO questionDTO) {
+        Question question = new Question();
+        question.setQuestionType(questionDTO.getQuestionType());
+        question.setText(questionDTO.getText());
+        return question;
+    }
 }
