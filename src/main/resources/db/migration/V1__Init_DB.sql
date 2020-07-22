@@ -1,24 +1,29 @@
 create table questions (
-        id SERIAL not null,
-        text varchar(255),
+       id  bigserial not null,
         lang varchar(255),
         probability float8,
+        type_of_question int4,
+        status int4,
+        text varchar(255),
         primary key (id)
     );
 create table answers (
-        id SERIAL not null,
-        text varchar(255),
+       id  serial not null,
         lang varchar(255),
-        question_id int4,
+        text varchar(255),
+        question_id int8,
         primary key (id)
     );
 
 create table question_file (
-        id SERIAL not null,
+       id  bigserial not null,
+        rate int8,
         data oid,
         file_name varchar(255),
         file_type varchar(255),
-        question_id int4,
+        file_path varchar(255),
+        version int4,
+        question_id int8,
         primary key (id)
     );
 

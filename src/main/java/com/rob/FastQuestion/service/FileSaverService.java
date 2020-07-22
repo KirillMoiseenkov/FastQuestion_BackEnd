@@ -18,7 +18,7 @@ public class FileSaverService {
 
     public void saveFile(String fileName, MultipartFile file) {
         String path = PATH + fileName;
-        try (FileOutputStream fos = new FileOutputStream(PATH)) {
+        try (FileOutputStream fos = new FileOutputStream(path)) {
             byte[] buffer = file.getBytes();
             fos.write(buffer, 0, buffer.length);
         } catch (IOException ex) {
@@ -33,6 +33,5 @@ public class FileSaverService {
         } else {
             System.out.println("Failed to delete the file");
         }
-
     }
 }

@@ -35,9 +35,6 @@ public class QuestionFile {
     @Column(name = "file_path")
     private String path;
 
-    @Lob
-    private byte[] data;
-
     @OneToOne(fetch = FetchType.LAZY)
     @ToString.Exclude
     @JsonBackReference
