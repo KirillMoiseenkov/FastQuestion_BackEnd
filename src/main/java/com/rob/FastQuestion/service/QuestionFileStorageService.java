@@ -27,7 +27,8 @@ public class QuestionFileStorageService implements QuestionFileStorage {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         QuestionFile qFile = new QuestionFile();
         qFile.setFileName(fileName);
-        fileSaverService.saveFile(fileName, file);
+        String path = fileSaverService.saveFile(fileName, file);
+        qFile.setPath(path);
         qFile.setFileType(file.getContentType());
 
         return questionFilesRepo.save(qFile);

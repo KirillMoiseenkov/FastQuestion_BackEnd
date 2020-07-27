@@ -11,12 +11,12 @@ import java.io.IOException;
 @Service
 public class FileSaverService {
 
-    private static String PATH = "/Users/kirillmoiseenkov/Desktop/WebSocket/";
+    private static String PATH = "/opt";
 
     @Autowired
     QuestionFileStorageService questionFileStorageService;
 
-    public void saveFile(String fileName, MultipartFile file) {
+    public String saveFile(String fileName, MultipartFile file) {
         String path = PATH + fileName;
         try (FileOutputStream fos = new FileOutputStream(path)) {
             byte[] buffer = file.getBytes();
@@ -24,6 +24,7 @@ public class FileSaverService {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+        return path;
     }
 
     public void deleteFile(String fileName) {
