@@ -54,5 +54,8 @@ public class QuestionFileStorageService {
         saveQuestionFile(questionFile);
     }
 
+    public QuestionFile getQuestionFileById(Long id) {
+        return questionFilesRepo.getOne(id);
+    }
 
 }

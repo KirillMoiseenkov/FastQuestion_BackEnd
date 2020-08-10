@@ -75,4 +75,11 @@ public class QestionController {
     public QuestionDTO getQuestionById(@PathVariable(value = "id") Long id) {
         return questionService.getQuestionDTOByQuestionWithFiles(questionService.findById(id));
     }
+
+    @GetMapping(value = "get/file/{id}")
+    @ApiModelProperty("Получить файл по id файла")
+    public QuestionFile getFilesById(@PathVariable Long id) {
+        return questionFileStorageService.getQuestionFileById(id);
+    }
+
 }
