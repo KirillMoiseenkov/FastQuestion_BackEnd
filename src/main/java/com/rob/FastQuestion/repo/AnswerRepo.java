@@ -12,7 +12,7 @@ public interface AnswerRepo extends JpaRepository<Answer, Integer> {
 
     List<Answer> findAnswersByQuestionText(String text);
 
-    List<Answer> findAnswersByQuestionId(Integer id);
+    List<Answer> findAnswersByQuestionId(Long id);
 
     @Query(value = "SELECT COUNT(*) FROM answers", nativeQuery = true)
     Integer getCountOfQuestions();

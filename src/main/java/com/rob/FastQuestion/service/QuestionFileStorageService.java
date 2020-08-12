@@ -57,5 +57,8 @@ public class QuestionFileStorageService implements QuestionFileStorage {
         saveQuestionFile(questionFile);
     }
 
+    public QuestionFile getQuestionFileById(Long id) {
+        return questionFilesRepo.findById(id).orElseThrow(() -> new FileNotFoundException("file is not exist"));
+    }
 
 }
