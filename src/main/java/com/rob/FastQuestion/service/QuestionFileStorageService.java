@@ -55,7 +55,7 @@ public class QuestionFileStorageService {
     }
 
     public QuestionFile getQuestionFileById(Long id) {
-        return questionFilesRepo.getOne(id);
+        return questionFilesRepo.findById(id).orElseThrow(() -> new FileNotFoundException("file is not exist"));
     }
 
 }
