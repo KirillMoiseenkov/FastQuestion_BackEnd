@@ -1,7 +1,6 @@
 package com.rob.FastQuestion.service;
 
 import com.rob.FastQuestion.exception.FileNotFoundException;
-import com.rob.FastQuestion.exception.FileStorageException;
 import com.rob.FastQuestion.models.QuestionFile;
 import com.rob.FastQuestion.repo.QuestionFilesRepo;
 import com.rob.FastQuestion.service.interfaces.QuestionFileStorage;
