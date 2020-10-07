@@ -31,16 +31,16 @@ public class QuestionService {
     }
 
     public Question getRandomQuestion() {
-//        double randomValue = 1 * doubleRandomGenerator.nextDouble();
-//        Double probability = RandomResistance.addToProbabilityResistance(randomValue);
-//
-//
-//        Question question = questionRepo.findFirstByProbabilityGreaterThanOrderByProbabilityDesc(probability);
-//        if (question == null)
-//            question = questionRepo.findFirstByProbabilityLessThanOrderByProbabilityDesc(probability);
+        double randomValue = 1 * doubleRandomGenerator.nextDouble();
+        Double probability = RandomResistance.addToProbabilityResistance(randomValue);
 
-//        return question;
-        return questionRepo.getRandomQuestion();
+
+        Question question = questionRepo.findFirstByProbabilityGreaterThanOrderByProbabilityDesc(probability);
+        if (question == null)
+            question = questionRepo.findFirstByProbabilityLessThanOrderByProbabilityDesc(probability);
+
+        return question;
+        // return questionRepo.getRandomQuestion();
     }
 
     public Question saveQuestionWithFile(MultipartFile multipartFile, Question question) {
