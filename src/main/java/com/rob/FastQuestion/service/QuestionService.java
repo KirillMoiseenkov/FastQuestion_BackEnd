@@ -40,7 +40,6 @@ public class QuestionService {
             question = questionRepo.findFirstByProbabilityLessThanOrderByProbabilityDesc(probability);
 
         return question;
-        // return questionRepo.getRandomQuestion();
     }
 
     public Question saveQuestionWithFile(MultipartFile multipartFile, Question question) {
