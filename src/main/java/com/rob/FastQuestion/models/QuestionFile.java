@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 
 @Entity
 @Table
@@ -40,4 +41,7 @@ public class QuestionFile {
     @JsonBackReference
     @ApiModelProperty("Вопрос")
     private Question question;
+
+    @Transient
+    private byte[] fileData;
 }

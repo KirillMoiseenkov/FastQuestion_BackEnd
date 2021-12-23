@@ -22,11 +22,11 @@ public class QuestionFileStorageService implements QuestionFileStorage {
     FileSaverService fileSaverService;
 
     @Transactional(rollbackOn = IOException.class)
-    public QuestionFile storageFile(MultipartFile file) {
+    public QuestionFile storageFile(MultipartFile file, String hash) {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         QuestionFile qFile = new QuestionFile();
         qFile.setFileName(fileName);
-        String path = fileSaverService.saveFile(fileName, file);
+        String path = fileSaverService.saveFile(hash + fileName, file);
         qFile.setPath(path);
         qFile.setFileType(file.getContentType());
 
@@ -47,7 +47,12 @@ public class QuestionFileStorageService implements QuestionFileStorage {
 
     @Transactional
     public List<QuestionFile> findByQuestionId(Long id) {
-        return questionFilesRepo.findByQuestionId(id);
+        List<QuestionFile> questionFiles = questionFilesRepo.findByQuestionId(id);
+        questionFiles.stream().forEach(questionFile -> {
+            questionFile.setFileData(fileSaverService.getFileByPath(questionFile.getFileName()));
+        });
+
+        return questionFiles;
     }
 
     public void addVoteToQuestionFile(Long id) {
@@ -59,5 +64,6 @@ public class QuestionFileStorageService implements QuestionFileStorage {
     public QuestionFile getQuestionFileById(Long id) {
         return questionFilesRepo.findById(id).orElseThrow(() -> new FileNotFoundException("file is not exist"));
     }
+
 
 }

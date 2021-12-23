@@ -6,7 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 public interface QuestionFileStorage {
-    QuestionFile storageFile(MultipartFile file);
+    QuestionFile storageFile(MultipartFile file, String hashForName);
 
     QuestionFile saveQuestionFile(QuestionFile questionFile);
 

@@ -1,21 +1,17 @@
 package com.rob.FastQuestion.service;
 
-import org.apache.tomcat.util.http.fileupload.FileUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 @Service
 public class FileSaverService {
 
-    private static String PATH = "/Users/kirillmoiseenkov/Desktop/WebSocket";
-
-    @Autowired
-    QuestionFileStorageService questionFileStorageService;
+    private static String PATH = "/Users/kirillmoiseenkov/Desktop/FQ/";
 
     public String saveFile(String fileName, MultipartFile file) {
         String path = PATH + fileName;
@@ -36,4 +32,17 @@ public class FileSaverService {
             System.out.println("Failed to delete the file");
         }
     }
+
+    public byte[] getFileByPath(String fileName) {
+        String path = PATH + fileName;
+        byte[] file = new byte[0];
+        try (FileInputStream fis = new FileInputStream(path)) {
+            file = fis.readAllBytes();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return file;
+    }
+
 }

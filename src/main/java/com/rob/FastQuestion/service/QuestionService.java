@@ -42,7 +42,7 @@ public class QuestionService {
     }
 
     public Question saveQuestionWithFile(MultipartFile multipartFile, Question question) {
-        QuestionFile questionFile = questionFileStorageService.storageFile(multipartFile);
+        QuestionFile questionFile = questionFileStorageService.storageFile(multipartFile, String.valueOf(question.hashCode()));
         question.setQuestionFile(questionFile);
         return questionRepo.save(question);
     }
