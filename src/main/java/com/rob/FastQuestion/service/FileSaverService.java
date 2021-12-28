@@ -11,7 +11,7 @@ import java.io.IOException;
 @Service
 public class FileSaverService {
 
-    private static String PATH = "/Users/kirillmoiseenkov/Desktop/FQ/";
+    private static String PATH = "/Users/";
 
     public String saveFile(String fileName, MultipartFile file) {
         String path = PATH + fileName;

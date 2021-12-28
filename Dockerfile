@@ -3,7 +3,7 @@ COPY src src
 COPY pom.xml pom.xml
 RUN mvn install -Dmaven.test.skip=true
 
-FROM openjdk:8-jdk-alpine
+FROM adoptopenjdk/openjdk11:latest
 MAINTAINER FQ.com
 VOLUME /tmp
 EXPOSE 8080
